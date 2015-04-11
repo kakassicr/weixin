@@ -7,6 +7,7 @@ import com.chat.R;
 import com.chat.model.Msg;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,10 +16,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
-public class ChatActivity extends Activity {
+public class ChatActivity extends Activity implements OnClickListener{
 	private ListView msgListView;
 	private EditText inputText;
 	private Button send;
+	private Button back;
 	private MsgAdapter adapter;
 	private List<Msg> msgList = new ArrayList<Msg>();
 	@Override
@@ -30,6 +32,8 @@ public class ChatActivity extends Activity {
 		adapter = new MsgAdapter(ChatActivity.this, R.layout.msg_item, msgList);
 		inputText = (EditText) findViewById(R.id.input_text);
 		send = (Button) findViewById(R.id.send);
+		back=(Button) findViewById(R.id.back);
+		back.setOnClickListener(this);
 		msgListView = (ListView) findViewById(R.id.msg_list_view);
 		msgListView.setAdapter(adapter);
 		send.setOnClickListener(new OnClickListener() {
@@ -57,4 +61,17 @@ public class ChatActivity extends Activity {
 		Msg msg3 = new Msg("This is Tom. Nice talking to you. ", Msg.TYPE_RECEIVED);
 		msgList.add(msg3);
 		}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.back:
+			Intent intent = new Intent(this, MainActivity.class);
+			startActivity(intent);
+			finish();
+			break;
+		default:
+			break;
+		}
+	}
 }
