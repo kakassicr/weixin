@@ -66,7 +66,7 @@ public class ChatActivity extends Activity implements OnClickListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.back:
-			Intent intent = new Intent(this, MainActivity.class);
+			Intent intent = new Intent(this, ListActivity.class);
 			startActivity(intent);
 			finish();
 			break;

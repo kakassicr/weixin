@@ -3,7 +3,12 @@
     android:layout_height="match_parent"
     android:background="#d8e0e8"
     android:orientation="vertical" >
-	<include layout="@layout/msg_title" />
+
+    <com.chat.activity.TitleLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </com.chat.activity.TitleLayout>
+
     <ListView
         android:id="@+id/msg_list_view"
         android:layout_width="match_parent"
