@@ -60,6 +60,7 @@ public class LoginActivity extends Activity {
 			protected Boolean doInBackground(Void... params) {
 				try {
 					socket = new Socket("192.168.56.1", 9999);
+//					socket = new Socket("10.0.2.2", 9999);
 //					socket = new Socket("192.168.1.6", 9999);
 					ObjectOutputStream oos=new ObjectOutputStream(
 							socket.getOutputStream());
