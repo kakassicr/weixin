@@ -26,7 +26,7 @@ public class ClientConServer {
 			
 			Message ms=(Message)ois.readObject();
 
-			if(ms.getMesType().equals("1"))
+//			if(ms.getMesType().equals("1"))
 			{
 
 //				ClientConServerThread ccst=new ClientConServerThread(s);
@@ -35,7 +35,7 @@ public class ClientConServer {
 //				ManageClientConServerThread.addClientConServerThread
 //				(((User)o).getUserId(), ccst);
 				b=true;
-			}else{
+//			}else{
 
 				s.close();
 			}

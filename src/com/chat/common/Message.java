@@ -2,12 +2,17 @@ package com.chat.common;
 
 public class Message implements java.io.Serializable{
 
-	private String mesType;
-
+	public static final int TYPE_RECEIVED = 0;
+	public static final int TYPE_SENT = 1;
+	private int type;
 	private String sender;
 	private String getter;
 	private String con;
 	private String sendTime;
+	public Message(String con, int type) {
+		this.con = con;
+		this.type = type;
+	}
 	public String getSender() {
 		return sender;
 	}
@@ -40,11 +45,10 @@ public class Message implements java.io.Serializable{
 		this.sendTime = sendTime;
 	}
 
-	public String getMesType() {
-		return mesType;
+	public void setType(int type) {
+		this.type = type;
 	}
-
-	public void setMesType(String mesType) {
-		this.mesType = mesType;
+	public int getType() {
+		return type;
 	}
 }

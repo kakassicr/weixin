@@ -1,0 +1,12 @@
+public void onClick(View v) {
+				String content = inputText.getText().toString();
+				if (!"".equals(content)) {
+					Message msg = new Message(content, Message.TYPE_SENT);
+					msgList.add(msg);
+					adapter.notifyDataSetChanged(); // 当有新消息时，刷新ListView中的显示
+
+					msgListView.setSelection(msgList.size()); // 将ListView定位到最后一行
+
+					inputText.setText(""); // 清空输入框中的内容
+				}
+			}

@@ -46,7 +46,7 @@ public class LoginActivity extends Activity {
 		});
 	}
 
-	Socket socket = null;
+	static Socket socket = null;
 	User user = new User();
 	Message ms;
 	public void connect() {
@@ -54,12 +54,15 @@ public class LoginActivity extends Activity {
 		Log.d("LoginActivity",mPassword);
 		user.setAccount(mAccount);
 		user.setPassword(mPassword);
-		AsyncTask<Void, String, Boolean> read = new AsyncTask<Void, String, Boolean>() {
+		AsyncTask<Void, String, Boolean> read = new AsyncTask<
+				Void, String, Boolean>() {
 			@Override
 			protected Boolean doInBackground(Void... params) {
 				try {
 					socket = new Socket("192.168.56.1", 9999);
-					ObjectOutputStream oos=new ObjectOutputStream(socket.getOutputStream());
+//					socket = new Socket("192.168.1.6", 9999);
+					ObjectOutputStream oos=new ObjectOutputStream(
+							socket.getOutputStream());
 					oos.writeObject(user);
 					ObjectInputStream ois=new ObjectInputStream(
 							socket.getInputStream());
@@ -74,9 +77,11 @@ public class LoginActivity extends Activity {
 
 			@Override
 			protected void onPostExecute(Boolean result) {
-				if (result&&ms.getMesType().equals("1")) {
+				if (result&&(ms.getType()==1)) {
 						Intent intent = new Intent(LoginActivity.this,
 								ListActivity.class);
+//						intent.putExtra("account",user.getAccount());
+						ListActivity.account=user.getAccount();
 						startActivity(intent);
 						finish();
 					} else {
