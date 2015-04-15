@@ -59,9 +59,9 @@ public class LoginActivity extends Activity {
 			@Override
 			protected Boolean doInBackground(Void... params) {
 				try {
-					socket = new Socket("192.168.56.1", 9999);
+//					socket = new Socket("192.168.56.1", 9999);
 //					socket = new Socket("10.0.2.2", 9999);
-//					socket = new Socket("192.168.1.6", 9999);
+					socket = new Socket("192.168.1.6", 9999);
 					ObjectOutputStream oos=new ObjectOutputStream(
 							socket.getOutputStream());
 					oos.writeObject(user);
@@ -82,7 +82,11 @@ public class LoginActivity extends Activity {
 						Intent intent = new Intent(LoginActivity.this,
 								ListActivity.class);
 //						intent.putExtra("account",user.getAccount());
+//						intent.putExtra("friendlist",ms.getCon());
+						//在调用ListActivity前为ListActivity中的account赋值
 						ListActivity.account=user.getAccount();
+						//在调用ListActivity前为ListActivity中的friendlist赋值
+						ListActivity.friendlist=ms.getCon().split(" ");
 						startActivity(intent);
 						finish();
 					} else {
