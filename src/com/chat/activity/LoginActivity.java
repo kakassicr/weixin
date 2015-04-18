@@ -50,8 +50,6 @@ public class LoginActivity extends Activity {
 	User user = new User();
 	Message ms;
 	public void connect() {
-		Log.d("LoginActivity",mAccount);
-		Log.d("LoginActivity",mPassword);
 		user.setAccount(mAccount);
 		user.setPassword(mPassword);
 		AsyncTask<Void, String, Boolean> read = new AsyncTask<
@@ -61,7 +59,7 @@ public class LoginActivity extends Activity {
 				try {
 //					socket = new Socket("192.168.56.1", 9999);
 //					socket = new Socket("10.0.2.2", 9999);
-					socket = new Socket("192.168.1.6", 9999);
+					socket = new Socket("192.168.1.5", 9999);
 					ObjectOutputStream oos=new ObjectOutputStream(
 							socket.getOutputStream());
 					oos.writeObject(user);

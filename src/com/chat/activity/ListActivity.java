@@ -1,6 +1,7 @@
 package com.chat.activity;
 
 import java.io.IOException;
+import java.net.Socket;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -34,18 +35,21 @@ public class ListActivity extends Activity implements OnClickListener{
 		account2=(TextView) findViewById(R.id.account2);
 //		String account=getIntent().getStringExtra("account");	
 		account2.setText(account);
-//		String friendlist=getIntent().getStringExtra("friendlist");a
+//		String friendlist=getIntent().getStringExtra("friendlist");
 //		String[] friendlist2=friendlist.split(" ");
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(
 				ListActivity.this, android.R.layout.simple_list_item_1, friendlist);
 		ListView listView = (ListView) findViewById(R.id.list_view);
 		listView.setAdapter(adapter);
+		Log.d("ListActivity","onCreate");
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View view, int index,
 					long arg3) {
+				
 					Intent intent = new Intent(ListActivity.this,
 							ChatActivity.class);
+					
 					intent.putExtra("friend", friendlist[index]);
 					startActivity(intent);
 					finish();
