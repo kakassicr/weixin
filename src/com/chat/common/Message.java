@@ -9,6 +9,13 @@ public class Message implements java.io.Serializable{
 	private String getter;
 	private String con;
 	private String sendTime;
+	private int isGet;
+	public int getIsGet() {
+		return isGet;
+	}
+	public void setIsGet(int isGet) {
+		this.isGet = isGet;
+	}
 	public Message(String con, int type) {
 		this.con = con;
 		this.type = type;
@@ -44,7 +51,6 @@ public class Message implements java.io.Serializable{
 	public void setSendTime(String sendTime) {
 		this.sendTime = sendTime;
 	}
-
 	public void setType(int type) {
 		this.type = type;
 	}

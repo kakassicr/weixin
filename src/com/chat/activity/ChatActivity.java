@@ -3,6 +3,7 @@ package com.chat.activity;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -133,12 +134,6 @@ public class ChatActivity extends Activity implements OnClickListener {
 				Log.d("ChatActivity", msgList.get(msgList.size()-1).getCon());
 			}
 			
-			@Override
-			protected void onCancelled() {
-				// TODO Auto-generated method stub
-				Log.d("ChatActivity", "onCancelled");
-//				super.onCancelled();
-			}
 		}
 		
 	
@@ -151,7 +146,7 @@ public class ChatActivity extends Activity implements OnClickListener {
 				Message msg = new Message(content, Message.TYPE_SENT);
 				msg.setSender(ListActivity.account);
 				msg.setGetter(friend);
-				msg.setSendTime(new java.util.Date().toString());
+				msg.setSendTime(new Timestamp(System.currentTimeMillis()).toString());
 				msgList.add(msg);
 				Log.d("ChatActivity", "------------2------------");
 				Log.d("ChatActivity", msgListView.toString());
