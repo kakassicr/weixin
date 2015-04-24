@@ -10,6 +10,7 @@ import java.net.Socket;
 import com.chat.R;
 import com.chat.common.Message;
 import com.chat.common.User;
+import com.chat.db.MyDatabaseHelper;
 import com.chat.service.ClientUser;
 
 import android.app.Activity;
@@ -28,11 +29,12 @@ public class LoginActivity extends Activity {
 	private EditText account;
 	private EditText password;
 	private String mAccount, mPassword;
-
+	private MyDatabaseHelper dbHelper;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login);
+		dbHelper = new MyDatabaseHelper(LoginActivity.this, "Chat.db", null, 1);
 		login = (Button) findViewById(R.id.login);
 		login.setOnClickListener(new OnClickListener() {
 			@Override
@@ -41,6 +43,7 @@ public class LoginActivity extends Activity {
 				password = (EditText) findViewById(R.id.password);
 				mAccount = account.getText().toString();
 				mPassword = password.getText().toString();
+				dbHelper.getWritableDatabase();
 				connect();		
 			}
 		});
@@ -57,9 +60,9 @@ public class LoginActivity extends Activity {
 			@Override
 			protected Boolean doInBackground(Void... params) {
 				try {
-//					socket = new Socket("192.168.56.1", 9999);
+					socket = new Socket("192.168.56.1", 9999);
 //					socket = new Socket("10.0.2.2", 9999);
-					socket = new Socket("192.168.1.5", 9999);
+//					socket = new Socket("192.168.1.2", 9999);
 					ObjectOutputStream oos=new ObjectOutputStream(
 							socket.getOutputStream());
 					oos.writeObject(user);
